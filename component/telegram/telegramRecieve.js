@@ -22,18 +22,8 @@ bot.on('message', function(msg){
 	//get text 
 	var echo = msg.text;
 
-	if(msg.text =="/id")
-	{
-		counter += 1;
-		//var message = "hallo " + msg.from.first_name + " /Counter: " + counter;
-		var message = "Deine Telegram ID lautet: " + msg.chat.id;
-		//send message
-		}
-	else if(msg.text == "/add")
-	{
-		var message = "Erfolgreich zur Observe IT Gruppe hinzugefügt";
-	}
-	else if(msg.text == "/group")
+	
+	if(msg.text == "/group")
 	{
 		message = "Test an Gruppe";
 		id =  -298648417;
@@ -56,5 +46,11 @@ bot.onText(/\/id/, (msg)=> {
 	//get sender id
 	var id = msg.chat.id;
 	bot.sendMessage(id, "Deine Telegram ID lautet: " + msg.chat.id);
+});
+
+bot.on(/\/add/, (msg)=> {
+	//get sender id
+	var id = msg.chat.id;
+	bot.sendMessage(id, "Gruppe hinzufügen");
 });
 

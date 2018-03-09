@@ -34,6 +34,7 @@ var mongo = require('./controller/mongoController');
 var users = require('./routes/usersRouter');
 var telegram = require('./routes/telegramRouter');
 var infounit = require('./routes/infounitRoute');
+var filterUnit = require('./routes/infounitFilterRoute');
 
 var app = express();
 //var error = require('./controller/errorController');
@@ -72,6 +73,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Router hinzufügen
 app.use('/users', users);
 app.use('/infounit',infounit);
+app.use('/filterunit',filterUnit);
 app.use('/telegram', telegram);
 
 //Index Route

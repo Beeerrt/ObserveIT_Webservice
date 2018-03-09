@@ -7,7 +7,7 @@ var infounitSchema = new schmea({
         type: Date,
         default: Date.now
     },        
-    temperatura: String,
+    temperatur: String,
     incline: String,
     humidity: String,
     brightness: String,
