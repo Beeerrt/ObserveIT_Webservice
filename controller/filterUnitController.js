@@ -13,3 +13,10 @@ exports.get = function(req, res){
    
 
 }
+
+exports.count = function(req,res){
+    infounitModel.distinct("nodeid").exec(function (err, count){
+        res.jsonp(count);
+    });
+
+}
