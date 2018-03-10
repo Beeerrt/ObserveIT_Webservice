@@ -42,6 +42,14 @@ module.exports.getUserByUsername = function (username, callback) {
     User.findOne(query, callback);
 };
 
+//change Userdate
+module.exports.changeUser = function (user, callback) {
+    
+    
+    //User.save(user,callback);
+    //user.save(callback);
+};
+
 //AddUser
 module.exports.addUser = function (newUser, callback) {
     bcrypt.genSalt(10, function (err, salt) {

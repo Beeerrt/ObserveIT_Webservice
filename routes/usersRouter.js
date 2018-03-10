@@ -104,11 +104,11 @@ router.post('/checkpassword',passport.authenticate('jwt', {session: false}),func
   });
 
 //set Profile
-router.post('/profile', passport.authenticate('jwt', {session: false}),function(req, res, next){
+// router.post('/profile', passport.authenticate('jwt', {session: false}),function(req, res, next){
   
   
-  res.send({user: req.user});
-  });
+//   res.send({user: req.user});
+//   });
 
 //get Profile
 router.get('/profile', passport.authenticate('jwt', {session: false}),function(req, res, next){
@@ -117,7 +117,16 @@ router.get('/profile', passport.authenticate('jwt', {session: false}),function(r
   });
 
  // router.get('/profile', passport.authenticate('jwt', {session: false}),usercontroller.get);
-  
+
+ router.put('/profile', function(req, res, next){
+  var users = req.users;
+  res.send(users);
+  //user ändern
+  // UserModel.changeUser(user, function(err,user){
+  //   if(err) throw err;
+  //   res.send(user);
+  // })
+ });
 
 
 router.get('/', function(req, res, next) {
