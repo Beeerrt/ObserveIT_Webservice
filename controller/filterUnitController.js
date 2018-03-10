@@ -14,6 +14,7 @@ exports.get = function(req, res){
 
 }
 
+//gibt die die NodeID's der in der DB enthaltenen Nodes zurück
 exports.count = function(req,res){
     infounitModel.distinct("nodeid").exec(function (err, count){
         res.jsonp(count);
