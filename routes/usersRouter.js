@@ -3,9 +3,9 @@ var router = express.Router();
 var UserModel = require(__base +'models/userModel');
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
-var config = require(__base + 'config/database');
+var config = require('../config/database');
 
-var usercontroller = require(__base + 'Controller/userController');
+var usercontroller = require('../controller/userController');
 
 
 //Register

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var filtertUnitController = require(__base + 'controller/filterUnitController');
+var filtertUnitController = require('../controller/filterUnitController');
 
 //ruft aktuellsten eintrag einer Node auf
 router.get('/node:id', filtertUnitController.get);

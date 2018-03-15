@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var telegramUser = require(__base + 'models/telegramUserModel');
-var config = require(__base + 'config/database');
+var telegramUser = require('../models/telegramUserModel');
+var config = require('../config/database');
 
 
 //get Profile

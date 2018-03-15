@@ -9,7 +9,6 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var cors = require('cors');
 
-global.__base = __dirname +'/';
 
 //Starten des Telegram Dienstes
 //var telegram = require('./component/telegram/telegramRecieve');

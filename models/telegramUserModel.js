@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-var config = require(__base + 'config/database');
+var config = require('../config/database');
 
 //DatenbankSchema definieren
 

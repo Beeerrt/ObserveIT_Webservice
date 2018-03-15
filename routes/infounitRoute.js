@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var infounitcontroller = require(__base + 'Controller/infounitController.js');
+var infounitcontroller = require('../controller/infounitController');
 
 
 //Speicher eine Unit

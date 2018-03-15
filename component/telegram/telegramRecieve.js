@@ -1,4 +1,4 @@
-var config = require(__base + 'config/telegram');
+var config = require('../config/telegram');
 var TelegramBot = require('node-telegram-bot-api');
 
 //token
