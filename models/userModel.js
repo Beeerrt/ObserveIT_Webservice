@@ -59,7 +59,7 @@ module.exports.changeUser = function (newUser, oldUser, callback) {
     console.log(newUser);
     //User Update
 
-    User.updateOne({"name" : olderUser.name}, {$ser :{"isAdmin": false});
+    //User.updateOne({"name" : olderUser.name}, {$ser :{"isAdmin": false});
     // User.updateOne({"name" : oldUser.name},{$set : {"name" : newUser.name,   
     //                                                     "username": newUser.username,
     //                                                     "password": newUser.password,
@@ -68,6 +68,7 @@ module.exports.changeUser = function (newUser, oldUser, callback) {
     //                                                 );
      callback();
 };
+
 
 //AddUser
 module.exports.addUser = function (newUser, callback) {
