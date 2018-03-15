@@ -117,15 +117,35 @@ router.get('/profile', passport.authenticate('jwt', {session: false}),function(r
   });
 
  // router.get('/profile', passport.authenticate('jwt', {session: false}),usercontroller.get);
-
+  
  router.put('/profile', function(req, res, next){
-  var users = req.users;
-  res.send(users);
+  //var oldUser = req.body.users[0];
+  //var newUser = req.body.users[1];
+  
+
+  //UserModel Erstellen
+    let newUser = new UserModel({
+      name: req.body.users[1].name,
+      email: req.body.users[1].email,
+      username: req.body.users[1].username,
+      password: req.body.users[1].password,
+      isAdmin: req.body.users[1].isAdmin
+    });
+
+    let oldUser = new UserModel({
+      name: req.body.users[0].name,
+      email: req.body.users[0].email,
+      username: req.body.users[0].username,
+      password: req.body.users[0].password,
+      isAdmin: req.body.users[0].isAdmin
+    })
+    
+
   //user ändern
-  // UserModel.changeUser(user, function(err,user){
-  //   if(err) throw err;
-  //   res.send(user);
-  // })
+  UserModel.changeUser(newUser,oldUser ,function(err,user){
+    if(err) throw err;
+    res.send(newUser);
+  })
  });
 
 

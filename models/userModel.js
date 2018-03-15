@@ -43,11 +43,30 @@ module.exports.getUserByUsername = function (username, callback) {
 };
 
 //change Userdate
-module.exports.changeUser = function (user, callback) {
+module.exports.changeUser = function (newUser, oldUser, callback) {
+    //check ob passwort sich geändert hat 
+    if(newUser.password == oldUser.password){
+        //passwort ist identisch
+        console.log("Passwort identisch")   
+    }
+    else{
+        //Passwort hat sich geändert
+        //Password muss neu gehasht werden
+        console.log("Passwort nicht identisch");
+    }
     
-    
-    //User.save(user,callback);
-    //user.save(callback);
+    console.log("alter name: " +  oldUser.name);
+    console.log(newUser);
+    //User Update
+
+    User.updateOne({"name" : olderUser.name}, {$ser :{"isAdmin": false});
+    // User.updateOne({"name" : oldUser.name},{$set : {"name" : newUser.name,   
+    //                                                     "username": newUser.username,
+    //                                                     "password": newUser.password,
+    //                                                     "isAdmin": newUser.isAdmin,
+    //                                                     "email": newUser.email}}
+    //                                                 );
+     callback();
 };
 
 //AddUser

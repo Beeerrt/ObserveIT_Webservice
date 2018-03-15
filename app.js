@@ -11,7 +11,7 @@ var cors = require('cors');
 
 
 //Starten des Telegram Dienstes
-var telegram = require('./component/telegram/telegramRecieve');
+//var telegram = require('./component/telegram/telegramRecieve');
 
 
 //MongoDB Verbindung aufbauen
