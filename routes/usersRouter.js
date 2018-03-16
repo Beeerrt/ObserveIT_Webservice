@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var UserModel = require(__base +'models/userModel');
+var UserModel = require('../models/userModel');
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
 var config = require('../config/database');
