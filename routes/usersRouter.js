@@ -41,7 +41,7 @@ router.post('/authenticate', function(req, res, next){
    var username = req.body.username;
    var password = req.body.password;
 
-    console.log(username + " und " + password);
+
    //User laden
    UserModel.getUserByUsername(username, function(err, user){
     if(err) throw err;
@@ -119,9 +119,6 @@ router.get('/profile', passport.authenticate('jwt', {session: false}),function(r
  // router.get('/profile', passport.authenticate('jwt', {session: false}),usercontroller.get);
   
  router.put('/profile', function(req, res, next){
-  //var oldUser = req.body.users[0];
-  //var newUser = req.body.users[1];
-  
 
   //UserModel Erstellen
     let newUser = new UserModel({

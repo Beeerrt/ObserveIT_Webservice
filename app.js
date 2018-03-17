@@ -13,6 +13,8 @@ var cors = require('cors');
 //Starten des Telegram Dienstes
 //var telegram = require('./component/telegram/telegramRecieve');
 
+//var infounitService = require('./component/infounit/checkInfounit');
+
 
 //MongoDB Verbindung aufbauen
 var mongo = require('./controller/mongoController');
