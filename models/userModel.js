@@ -77,38 +77,26 @@ async function changeUser(newUser, oldUser, callback) {
 module.exports.changeUser = changeUser;
 
 //AddUser
-module.exports.addUser = function (newUser, callback) {
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(newUser.password, salt, function (err, hash) {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser.save(callback);
-        });
-    });
+module.exports.addUser = addUser;
+
+async function addUser(newUser, callback) {
+    var hash = await hashPassword(newUser.password);
+    newUser.password = hash;
+    newUser.save(callback);
 };
 
 //Compare Password
 //Vergleicht das gesendete Password mit dem Password aus der Datenbank
-module.exports.comparePassword = function (candidatePassword, hash, callback) {
+module.exports.comparePassword = comparePassword;
 
-    bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
-        if (err) throw err;
-
-        callback(null, isMatch);
-
-    });
-
+async function comparePassword(candidatePassword, hash, callback) {
+    var isMatch = await bcrypt.compare(candidatePassword, hash);
+    callback(null,isMatch);
 };
 
 async function hashPassword(password)
 {
-   console.log("hash: " + password );
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(password, salt, function (err, hash) {
-            if (err) throw err;
-
-            console.log("return wert:" + hash);
-            return hash;
-        });
-    });
+    var salt = await bcrypt.genSalt(10);
+    var hash = await bcrypt.hash(password,salt)
+    return hash;
 }

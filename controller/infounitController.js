@@ -1,4 +1,4 @@
-var model = require('../Models/infounitModel');
+var model = require('../models/infounitModel');
 var mongoose = require('mongoose');
 var infounitModel = mongoose.model('infounit');
 var _ = require('underscore');
