@@ -37,6 +37,7 @@ var users = require('./routes/usersRouter');
 var telegram = require('./routes/telegramRouter');
 var infounit = require('./routes/infounitRoute');
 var filterUnit = require('./routes/infounitFilterRoute');
+var limit = require('./routes/limitRoute');
 
 var app = express();
 //var error = require('./controller/errorController');
@@ -77,6 +78,7 @@ app.use('/users', users);
 app.use('/infounit',infounit);
 app.use('/filterunit',filterUnit);
 app.use('/telegram', telegram);
+app.use('/limit' , limit);
 
 //Index Route
 app.use('/', function(req, res){
