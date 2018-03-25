@@ -54,9 +54,8 @@ async function changeUser(newUser, oldUser, callback) {
     else{
         //Passwort hat sich geändert
         //Password muss neu gehasht werden
-        
-       
-        newUser.password =  await hashPassword(oldUser.password);
+        console.log("klartext Password:"+ newUser.password )
+        newUser.password =  await hashPassword(newUser.password);
         console.log("password gehasht : " + newUser.password);
 
  
@@ -65,7 +64,7 @@ async function changeUser(newUser, oldUser, callback) {
     console.log("alter name: " +  oldUser.name);
     console.log(newUser);
     //User Update
-    var query = { name: 'hans' };
+    var query = { name: oldUser.name };
     var values = { $set: {name: newUser.name, 
                             username:newUser.username, 
                             email:newUser.email,

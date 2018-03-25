@@ -41,7 +41,7 @@ router.post('/authenticate', function(req, res, next){
    var username = req.body.username;
    var password = req.body.password;
 
-
+  console.log(username);
    //User laden
    UserModel.getUserByUsername(username, function(err, user){
     if(err) throw err;
@@ -118,30 +118,36 @@ router.get('/profile', passport.authenticate('jwt', {session: false}),function(r
 
  // router.get('/profile', passport.authenticate('jwt', {session: false}),usercontroller.get);
   
- router.put('/profile', function(req, res, next){
-
+ router.put('/profile', passport.authenticate('jwt', {session: false}),function(req, res, next){
+    console.log("put Profile wird aufgerufen");
   //UserModel Erstellen
     let newUser = new UserModel({
-      name: req.body.users[1].name,
-      email: req.body.users[1].email,
-      username: req.body.users[1].username,
-      password: req.body.users[1].password,
-      isAdmin: req.body.users[1].isAdmin
+      name: req.body[1].name,
+      email: req.body[1].email,
+      username: req.body[1].username,
+      password: req.body[1].password,
+      isAdmin: req.body[1].isAdmin
     });
 
     let oldUser = new UserModel({
-      name: req.body.users[0].name,
-      email: req.body.users[0].email,
-      username: req.body.users[0].username,
-      password: req.body.users[0].password,
-      isAdmin: req.body.users[0].isAdmin
+      name: req.body[0].name,
+      email: req.body[0].email,
+      username: req.body[0].username,
+      password: req.body[0].password,
+      isAdmin: req.body[0].isAdmin
     })
-    
+    console.log("alter User: "  + oldUser);
+    console.log("neuer User: "  + newUser);
+
 
   //user ändern
   UserModel.changeUser(newUser,oldUser ,function(err,user){
-    if(err) throw err;
-    res.send(newUser);
+    if(err) {
+      res.send({success: false, msg: 'Userdaten konnten nicht geändert werden'});
+    }
+    else{
+      res.send({success: true, msg: 'Userdaten erfolgreich geändert'});
+    }
   })
  });
 

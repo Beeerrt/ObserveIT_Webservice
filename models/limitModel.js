@@ -5,9 +5,8 @@ var limitSchema = new schmea({
     //neigung
     maxTemperatur: String,
     minTemperatur: String,
-    //neigung
-    maxIncline: String,
-    minIncline: String,
+    //neigungs 
+    avgIncline: String,
     //Luftfeuchtigkeit
     maxHumidity: String,
     minHumidity: String,

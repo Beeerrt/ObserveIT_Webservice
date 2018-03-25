@@ -20,6 +20,7 @@ infounitSchema.statics = {
         this.findOne({_id : id}).exec(cb);
         //this.find().exec(cb);
     }
+    
 };
 
 mongoose.model('infounit', infounitSchema);
