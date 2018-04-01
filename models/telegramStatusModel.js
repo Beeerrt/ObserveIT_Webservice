@@ -4,7 +4,6 @@ var config = require('../config/database');
 
 //DatenbankSchema definieren
 
-//Userschema anlegen
 var telegramStatusSchema = mongoose.Schema({
     status: {
         type: Boolean
