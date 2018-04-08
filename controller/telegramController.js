@@ -3,17 +3,13 @@ var telegramUserModel = mongoose.model('TelegramUser');
 var telegramStatusModel = mongoose.model('TelegramStatus');
 
 
-exports.getStatus = getStatus;
-
-async function getStatus(req, res){
+exports.getStatus = async function (req, res){
     var status = await telegramStatusModel.find({});
     res.jsonp(status);
 }
 
 
-exports.setStatus = setStatus;
-
-async function setStatus(req,res){
+exports.setStatus = async function (req,res){
     
     //laden des aktuelle Status
     var currentStatus = await telegramStatusModel.find({});
@@ -40,23 +36,21 @@ async function setStatus(req,res){
     //res.send({success: true, msg: 'Benachrichtungsstatus erfolgreich geändert'});
 }
 
-exports.get = getTelegramUser;
-
-async function getTelegramUser(req, res){
+//liefert alle TelegramUser zurück
+exports.get = async function (req, res){
     var result = await telegramUserModel.find({});
     res.jsonp(result);
 }
 
-exports.post = setTelegramUser;
-
-async function setTelegramUser(req,res){
+//speichert übergebenen TelegramUser ab
+exports.post = async function (req,res){
     var newTelegramUserModel = new telegramUserModel(req.body);
      newTelegramUserModel.save();
      res.send({success: true, msg: 'TelegramUser erfolgreich geändert'});
     }
 
-exports.delete = deleteTelegramUser;
-async function deleteTelegramUser(req,res){
+//löscht übergebenen TelegramUser
+exports.delete = async function (req,res){
 
     console.log(req.params.telegramid);
 

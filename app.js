@@ -32,7 +32,7 @@ var mongo = require('./controller/mongoController');
 //   console.log('Failed to Connect to Database: ' + err);
 // })
 
-//Routen anlegen
+//Routen Controller laden
 var users = require('./routes/usersRouter');
 var telegram = require('./routes/telegramRouter');
 var infounit = require('./routes/infounitRoute');
@@ -66,6 +66,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//passport.js initialisieren
 require('./config/passport')(passport);
 
 //Set static Folder
@@ -73,7 +74,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-//Router hinzufügen
+//Routen hinzufügen
 app.use('/users', users);
 app.use('/infounit',infounit);
 app.use('/filterunit',filterUnit);

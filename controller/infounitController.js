@@ -6,11 +6,12 @@ var _ = require('underscore');
 exports.post = function(req, res){
       
     var newinfounit = new infounitModel(req.body);
-    newinfounit.save();
+    console.log(newinfounit.save());
     res.jsonp(newinfounit);
 };
 
-exports.get = function(req, res) {;
+exports.get = function(req, res) {
+    
     infounitModel.find().exec(function(err, infounits) 
     {
         res.jsonp(infounits);

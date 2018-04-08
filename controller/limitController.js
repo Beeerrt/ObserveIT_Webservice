@@ -2,32 +2,12 @@ var mongoose = require('mongoose');
 var limitModel = mongoose.model('limit');
 
 
-
-exports.get = getLimit;
-
-async function getLimit(req, res){
+exports.get = async function getLimit(req, res){
     var result = await limitModel.find({});
     res.jsonp(result);
 }
 
-exports.post = setLimit;
-
-async function setLimit(req,res){
-    // var newLimitModel = new limitModel(req.body);
-    // newLimitModel.save();
-
-    
-    // //neigung
-    // maxTemperatur: String,
-    // minTemperatur: String,
-    // //neigungs 
-    // avgIncline: String,
-    // //Luftfeuchtigkeit
-    // maxHumidity: String,
-    // minHumidity: String,
-    //  //helligkeit
-    // maxBrightness: String,
-    // minBrightness: String
+ exports.post = async function setLimit(req,res){
 
     //laden des aktuelle Status
     var currentLimits = await limitModel.find({});
