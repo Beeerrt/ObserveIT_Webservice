@@ -2,19 +2,35 @@ var mongoose = require('mongoose');
 var schmea = mongoose.Schema;
 
 var limitSchema = new schmea({
-    maxTemperatur: String,
-    minTemperatur: String,
-    avgIncline: String,
-    maxHumidity: String,
-    minHumidity: String,
-    maxBrightness: String,
-    minBrightness: String
+    maxTemperatur: {
+        type: String,
+        required: true},
+    minTemperatur: {
+        type: String,
+        required: true},
+    avgIncline: {
+        type: String,
+        required: true},
+    maxHumidity: {
+        type: String,
+        required: true},
+    minHumidity: {
+        type: String,
+        required: true},
+    maxBrightness: {
+        type: String,
+        required: true},
+    minBrightness: {
+        type: String,
+        required: true},
+    batterylevel: {
+        type: String,
+        required: true}
 });
 
 limitSchema.statics = {
     load: function(id, cb){
         this.findOne({_id : id}).exec(cb);
-        //this.find().exec(cb);
     }
 };
 

@@ -11,14 +11,13 @@ var infounitSchema = new schmea({
     incline: String,
     humidity: String,
     brightness: String,
-    positon: String
-
+    level: String,
+    position: String
 });
 
 infounitSchema.statics = {
     load: function(id, cb){
-        this.findOne({_id : id}).exec(cb);
-        //this.find().exec(cb);x    
+        this.findOne({_id : id}).exec(cb);    
     }
     
 };

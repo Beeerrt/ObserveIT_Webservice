@@ -3,13 +3,25 @@ var mongoose = require('mongoose');
 var infounitModel = mongoose.model('infounit');
 var _ = require('underscore');
 
+/**
+ * Abspeichern einer Infounit
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.post = function(req, res){
       
     var newinfounit = new infounitModel(req.body);
     console.log(newinfounit.save());
+    console.log("Infounit gespeichert: ");
+    console.log(newinfounit);
     res.jsonp(newinfounit);
 };
 
+/**
+ * Laden aller Infounits
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.get = function(req, res) {
     
     infounitModel.find().exec(function(err, infounits) 
@@ -18,7 +30,11 @@ exports.get = function(req, res) {
     });
 };
 
-
+/**
+ * Laden einer Infounit anhand der InfounitID
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.show = function(req, res){
     infounitModel.load(req.params.infounitId, function(err, infounit)
     {
@@ -26,6 +42,11 @@ exports.show = function(req, res){
     });
 };
 
+/**
+ * Updaten einer Infounit
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.put = function(req, res){
     infounitModel.load(req.params.infounitId, function(err, infounit)
     {
@@ -38,7 +59,11 @@ exports.put = function(req, res){
     });
 };
 
-
+/**
+ * Löschen einer Infounit
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.delete = function(req, res){
     infounitModel.load(req.params.infounitId, function(err, infounit)
     {

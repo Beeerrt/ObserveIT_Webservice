@@ -10,27 +10,9 @@ var passport = require('passport');
 var cors = require('cors');
 
 
-//Starten des Telegram Dienstes
-//var telegram = require('./component/telegram/telegramRecieve');
-
-//var infounitService = require('./component/infounit/checkInfounit');
-
-
 //MongoDB Verbindung aufbauen
 var mongo = require('./controller/mongoController');
 
-// //MongoDB Connection
-// mongoose.connect(config.database);
-
-// //Verbindung zur Datenbank erfolgreich
-// mongoose.connection.on('connected', function(){
-//   console.log('Connected to database ' + config.database);
-// })
-
-// //Verbindung zur Datenbank fehlgeschlagen
-// mongoose.connection.on('err', function(err){
-//   console.log('Failed to Connect to Database: ' + err);
-// })
 
 //Routen Controller laden
 var users = require('./routes/usersRouter');
@@ -39,8 +21,9 @@ var infounit = require('./routes/infounitRoute');
 var filterUnit = require('./routes/infounitFilterRoute');
 var limit = require('./routes/limitRoute');
 
+//Verwendung der Express Middleware
 var app = express();
-//var error = require('./controller/errorController');
+
 
 //wird benötigt damit anfragen von anderen URLs angenommen werden
 var corsOptions = {
@@ -51,22 +34,22 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-// view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
-
-
-
 app.use(logger('dev'));
+
+//Umwandeln der Requests 
+//bodyParser.json Middleware wird nur verwendet bei Requests mit dem Content-Type : Json
+//liefert Body Objekt zurück
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//Passport Middleware initialisieren und Session erstellen
+//Passport Middleware initialisieren
 app.use(passport.initialize());
-app.use(passport.session());
 
-//passport.js initialisieren
+
+//app.use(passport.session());
+
+//Tokenverfahren laden 
 require('./config/passport')(passport);
 
 //Set static Folder
@@ -88,7 +71,7 @@ app.use('/', function(req, res){
 
   
 
-// // catch 404 and forward to error handler
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

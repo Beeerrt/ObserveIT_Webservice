@@ -7,7 +7,8 @@ var config = require('../config/database');
 
 var usercontroller = require('../controller/userController');
 
-router.post('/register', passport.authenticate('jwt', {session: false}) ,usercontroller.post);
+
+router.post('/register',  passport.authenticate('jwt', {session: false})  , usercontroller.post);
 
 router.post('/authenticate',usercontroller.authenticate)
 
@@ -15,10 +16,9 @@ router.get('/profile/:username',  passport.authenticate('jwt', {session: false})
  
 router.put('/profile',  passport.authenticate('jwt', {session: false}),usercontroller.setProfile)
 
+router.get('/',passport.authenticate('jwt', {session: false}), usercontroller.getUsers);
 
-router.get('/', function(req, res, next) {
-  res.send('<h1>Hallo</h1>');
-});
+router.delete('/:username',passport.authenticate('jwt', {session: false}), usercontroller.deleteUser);
 
 // #endregion
 
@@ -26,5 +26,5 @@ module.exports = router;
 
 
 //Um eine Route vor ungewünschten Zugriffen zu sichern wird in der Route 
-// passport.authenticate('jwt', {session: false}) als parameter mitübergeben
+//passport.authenticate('jwt', {session: false}) als parameter mitübergeben
 //Dies Überprüft das Token, welches in der Payload steht.

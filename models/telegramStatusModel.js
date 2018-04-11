@@ -6,14 +6,14 @@ var config = require('../config/database');
 
 var telegramStatusSchema = mongoose.Schema({
     status: {
-        type: Boolean
+        type: Boolean,
+        required: true
     }
 });
     
 telegramStatusSchema.statics = {
     load: function(cb){
         this.find({}).exec(cb);
-        //this.find().exec(cb);
     }
 };
 
